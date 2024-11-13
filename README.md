@@ -1,99 +1,94 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Here’s the README formatted with Markdown for easy copying to GitHub:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Overview
 
-## Description
+The School Events Management app is a robust platform designed to coordinate and track school-related events, allowing teachers and students to create, join, and follow events effortlessly. It supports full **CRUD** (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects, making it a versatile tool for the school community.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Key Features
 
-## Project setup
+- **Event Management**: Both teachers and regular users can create events, such as classes or group activities. Users can respond to any event by choosing **Accept**, **Maybe**, or **Reject**, allowing all participants to stay updated on attendance and event organizers.
+- **Subjects and Courses**: A flexible structure supports subjects and courses, where each subject can have multiple courses. Teachers must be associated with one or more subjects, ensuring academic events are linked to an instructor’s expertise.
+- **Organizer and Attendance Tracking**: Each event logs the organizer and tracks user responses, providing a clear view of event engagement across the community.
 
-```bash
-$ npm install
-```
+### Technology and Development Stack
 
-## Compile and run the project
+- **NestJS Framework**: Built using NestJS, which provides a modular structure and uses the NestJS CLI to streamline development and enforce advanced design patterns. This enables clean, maintainable, and scalable code, following best practices in backend architecture.
+- **REST and GraphQL APIs**: The app provides robust APIs, allowing flexible and efficient data interaction for all key functionalities through both REST and GraphQL.
+- **TypeORM and Query Builder**: Integrates MySQL with **TypeORM** and **Query Builder** to facilitate database interactions, making it easy to structure, manage, and retrieve relational data.
+- **MySQL Database**: The app uses MySQL as the primary data store, managed via TypeORM for seamless and structured database operations.
+- **Testing**: Comprehensive **unit tests** and **end-to-end (e2e) tests** ensure all features work as expected.
+- **Docker**: The app runs in a Docker container, providing a consistent and portable environment across different systems.
+- **Postman Documentation**: All API requests, including both REST and GraphQL endpoints, are fully documented in Postman. This makes it easy for developers and users to explore, test, and understand the functionalities available.
 
-```bash
-# development
-$ npm run start
+## Installation
 
-# watch mode
-$ npm run start:dev
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
 
-# production mode
-$ npm run start:prod
-```
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+   This command installs all dependencies listed in the `package.json` file.
 
-## Run tests
+3. **Set up Environment Variables**:
 
-```bash
-# unit tests
-$ npm run test
+   You need two `.env` files, one for regular development and one for end-to-end testing. Each environment file should connect to a different database.
 
-# e2e tests
-$ npm run test:e2e
+   - **e2e.env** (for end-to-end testing):
+     ```env
+     DB_HOST=localhost
+     DB_PORT=3306
+     DB_USER=root
+     DB_PASSWORD=example
+     DB_NAME=nest-events-e2e
+     DB_DROP_SCHEMA=1
 
-# test coverage
-$ npm run test:cov
-```
+     APP_URL=mywebsite.com
+     SUPPORT_EMAIL=support@${APP_URL}
 
-## Deployment
+     AUTH_SECRET=secret123
+     ```
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+   - **dev.env** (for regular development):
+     ```env
+     DB_HOST=localhost
+     DB_PORT=3306
+     DB_USER=root
+     DB_PASSWORD=example
+     DB_NAME=nest-events
+     DB_DROP_SCHEMA=0
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+     APP_URL=mywebsite.com
+     SUPPORT_EMAIL=support@${APP_URL}
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+     AUTH_SECRET=secret123
+     ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+   The `DB_DROP_SCHEMA` variable is set to `1` in `e2e.env` to allow automatic schema dropping for test resets. In `dev.env`, it’s set to `0` to preserve data between development sessions.
 
-## Resources
+4. **Run the app with Docker**:
+   ```bash
+   docker-compose up --build
+   ```
 
-Check out a few resources that may come in handy when working with NestJS:
+5. **Testing**:
+   - **Unit Tests**:
+     ```bash
+     npm run test:unit
+     ```
+   - **End-to-End (e2e) Tests**:
+     ```bash
+     npm run test:e2e
+     ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Local Development
 
-## Support
+After setting up your environment, use the app’s GraphQL playground and Postman to explore the API, test events, and manage user participation.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
