@@ -1,4 +1,3 @@
-Here’s the README formatted with Markdown for easy copying to GitHub:
 
 ---
 
