@@ -32,3 +32,10 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+src/app.japan.service.ts
+src/app.dummy.ts
+src/app.controller.ts
+src/test.spec.ts
+e2e.env
+dev.env
