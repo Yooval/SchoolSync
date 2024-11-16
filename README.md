@@ -16,10 +16,10 @@ The **School Events Management app** is a robust platform designed to coordinate
 - **REST and GraphQL APIs**: The app provides robust APIs, allowing flexible and efficient data interaction for all key functionalities through both REST and GraphQL.
 - **TypeORM and Query Builder**: Integrates MySQL with TypeORM and Query Builder to facilitate database interactions, making it easy to structure, manage, and retrieve relational data.
 - **MySQL Database**: The app uses **MySQL** as the primary data store, managed via TypeORM for seamless and structured database operations.
-- **Authentication & Authorization**: Authentication is handled using **JWT (JSON Web Tokens)** for secure, stateless authentication. Authorization is enforced using role-based access control (RBAC), ensuring that only authorized users can perform specific actions, such as creating or managing events.
+- **Authentication & Authorization**: Authentication is handled using **JWT** (JSON Web Tokens) for secure, stateless authentication. Authorization is enforced using role-based access control (RBAC), ensuring that only authorized users can perform specific actions, such as creating or managing events.
 - **Error Handling**: Built-in NestJS error handling mechanisms ensure that any issues encountered during API requests are properly caught and communicated with meaningful HTTP status codes and error messages. This includes both client-side validation and server-side errors.
 - **Testing**: Comprehensive **unit tests** and **end-to-end (e2e) tests** ensure all features work as expected.
-- **Docker**: The app runs in a **Docker container**, providing a consistent and portable environment across different systems.
+- **Docker**: The app runs in a Docker container, providing a consistent and portable environment across different systems.
 - **Postman Documentation**: All API requests, including both REST and GraphQL endpoints, are fully documented in Postman. This makes it easy for developers and users to explore, test, and understand the functionalities available. View documentation [here](https://documenter.getpostman.com/view/38510958/2sAY55bJLx#491d3242-5137-4f82-a8ab-800ac8aa4946).
 
 ## Installation
