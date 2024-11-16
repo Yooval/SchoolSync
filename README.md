@@ -20,7 +20,7 @@ The **School Events Management app** is a robust platform designed to coordinate
 - **Error Handling**: Built-in NestJS error handling mechanisms ensure that any issues encountered during API requests are properly caught and communicated with meaningful HTTP status codes and error messages. This includes both client-side validation and server-side errors.
 - **Testing**: Comprehensive **unit tests** and **end-to-end (e2e) tests** ensure all features work as expected.
 - **Docker**: The app runs in a **Docker container**, providing a consistent and portable environment across different systems.
-- **Postman Documentation**: All API requests, including both REST and GraphQL endpoints, are fully documented in Postman. This makes it easy for developers and users to explore, test, and understand the functionalities available. View documentation here: https://documenter.getpostman.com/view/38510958/2sAY55bJLx#491d3242-5137-4f82-a8ab-800ac8aa4946
+- **Postman Documentation**: All API requests, including both REST and GraphQL endpoints, are fully documented in Postman. This makes it easy for developers and users to explore, test, and understand the functionalities available. View documentation [here](https://documenter.getpostman.com/view/38510958/2sAY55bJLx#491d3242-5137-4f82-a8ab-800ac8aa4946).
 
 ## Installation
 
