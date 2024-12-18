@@ -1,7 +1,7 @@
 
 ## Overview
 
-SchoolSync is a **TypeScript** Events Management app .Designed to coordinate and track school-related events, allowing teachers and students to create, join, and follow events. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
+SchoolSync is a **TypeScript** Events Management REST API application. Designed to coordinate and track school-related events, allowing teachers and students to create, join, and follow events. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
 
 ### Key Features
 
