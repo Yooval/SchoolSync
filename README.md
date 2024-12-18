@@ -6,9 +6,9 @@ The **School Events Management app** is a platform designed to coordinate and tr
 ### Key Features
 
 - **Event Management**: Both teachers and regular users can create events, such as classes or group activities. Users can respond to any event by choosing **Accept**, **Maybe**, or **Reject**, allowing all participants to stay updated on attendance and event organizers.
-- **Subjects and Courses**: A flexible structure supports subjects and courses, where each subject can have multiple courses. Teachers must be associated with one or more subjects, ensuring academic events are linked to an instructor’s expertise.
-- **Organizer and Attendance Tracking**: Each event logs the organizer and tracks user responses, providing a clear view of event engagement across the community.
-- **Authentication and Authorization**: The app uses NestJS authentication mechanisms, enabling user registration and login with JWT tokens for secure access. Authorization ensures that only authorized users (such as teachers or admins) can manage specific resources, like events and courses, while regular users can interact with events based on their permissions.
+- **Subjects and Courses**: Each subject can have multiple courses. Teachers must teach at least one subject.
+- **Organizer and Attendance Tracking**: Each event display the organizer and tracks users responses, providing a clear view of attendance.
+- **Security**: The app uses JWT(Json Web Tokens) for authentication and authorization. 
 
 ### Technology and Development Stack
 
