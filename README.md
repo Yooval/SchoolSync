@@ -1,7 +1,7 @@
 
 ## Overview
 
-The **School Events Management app** is a robust platform designed to coordinate and track school-related events, allowing teachers and students to create, join, and follow events effortlessly. It supports full **CRUD** (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects, making it a versatile tool for the school community.
+The **School Events Management app** is a platform designed to coordinate and track school-related events, allowing teachers and students to create, join, and follow events effortlessly. It supports full **CRUD** (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects, making it a versatile tool for the school community.
 
 ### Key Features
 
