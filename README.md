@@ -14,9 +14,8 @@ The **School Events Management app** is a platform designed to coordinate and tr
 
 - **REST and GraphQL APIs**: The app provides APIs, allowing data interaction for all key functionalities through both REST and GraphQL, documented in Postman [here](https://documenter.getpostman.com/view/38510958/2sAY55bJLx#491d3242-5137-4f82-a8ab-800ac8aa4946). give it a try!
 - - **MySQL Database**: The app uses **MySQL**.
-- **Authentication & Authorization**: Authentication is handled using **JWT** (JSON Web Tokens) ensuring that only authorized users can perform specific actions, such as creating or managing events.
 - **Error Handling**: Built-in NestJS error handling mechanisms ensure that any issues encountered during API requests are properly caught and communicated with meaningful HTTP status codes and error messages.
-- **Testing**: Comprehensive **unit tests** and **end-to-end (e2e) tests** ensure all features work as expected.
+- **Testing**: Comprehensive **unit tests** and **end-to-end (e2e) tests** ensure app work as expected.
 - **Docker**: The app runs in a Docker container, providing a consistent and portable environment across different systems.
 
 ## Installation
