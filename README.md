@@ -10,7 +10,7 @@ SchoolSync is a **TypeScript** Events Management REST API application. Designed 
 - **Organizer and Attendance Tracking**: Each event display the organizer and tracks users responses, providing a clear view of attendance.
 - **Security**: The app uses JWT(Json Web Tokens) for authentication and authorization. 
 
-### Tech Stack and Tools
+### Tech & Tools
 
 - **REST and GraphQL APIs**: The app provides APIs, allowing data interaction for all key functionalities through both REST and GraphQL, documented in Postman [here](https://documenter.getpostman.com/view/38510958/2sAY55bJLx#491d3242-5137-4f82-a8ab-800ac8aa4946). give it a try!
 -  **MySQL Database**: The app uses **MySQL**.
