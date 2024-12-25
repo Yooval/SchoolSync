@@ -1,19 +1,29 @@
-// Defines the user entity, representing the core user data in the application.
-
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Event } from './../events/event.entity';
-import { Profile } from "./profile.entity";
-import { Expose } from "class-transformer";
-import { Attendee } from "./../events/attendee.entity";
+import { Profile } from './profile.entity';
+import { Expose } from 'class-transformer';
+import { Attendee } from './../events/attendee.entity';
+
+export enum UserRole {
+  TEACHER = 'TEACHER',
+  STUDENT = 'STUDENT',
+}
 
 @Entity() // Define user entity.
 @ObjectType()
 export class User {
+  subjects: any;
   constructor(partial?: Partial<User>) {
     Object.assign(this, partial);
   }
-
 
   @PrimaryGeneratedColumn()
   @Expose()
@@ -43,8 +53,17 @@ export class User {
   @Field()
   lastName: string;
 
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    nullable: false, // Role must be specified
+  })
+  @Expose()
+  @Field(() => String)
+  role: UserRole;
+
   @OneToOne(() => Profile)
-  @JoinColumn()  // add profile column in the table of the user
+  @JoinColumn() // Add profile column in the table of the user
   @Expose()
   profile: Profile;
 

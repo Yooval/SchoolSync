@@ -11,15 +11,16 @@ import { CreateUserDto } from './input/create.user.dto';
 
 @Resolver(() => User)
 export class UserResolver {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   @Query(() => User, { nullable: true })
   @UseGuards(AuthGuardJwtGql)
   public async me(@CurrentUser() user: User): Promise<User> {
-    return user;// return current user.
+    return user; // return current user.
   }
   @Mutation(() => User, { name: 'userAdd' })
   public async add(@Args('input') input: CreateUserDto): Promise<User> {
-    return await this.userService.create(input);
+    const user = await this.userService.create(input);
+    return user;
   }
 }

@@ -14,4 +14,8 @@ export class TeacherAddInput {
   @IsNotEmpty()
   @IsEnum(Gender)
   gender: Gender;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 }

@@ -1,24 +1,28 @@
-// The GraphQL resolver for the Teacher entity, managing queries and mutations related to teachers.
-
-import { Resolver, Query, Args, Int, Mutation, ResolveField, Parent, } from '@nestjs/graphql';
-import { PaginatedTeachers, Teacher } from './teacher.entity';
-import { Repository } from 'typeorm';
+import {
+  Resolver,
+  Query,
+  Args,
+  Int,
+  Mutation,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import { Teacher, PaginatedTeachers } from './teacher.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { TeacherAddInput } from './input/teacher-add.input';
-import { Logger, UseGuards } from '@nestjs/common';
 import { TeacherEditInput } from './input/teacher-edit.input';
 import { EntityWithId } from './school.types';
 import { AuthGuardJwtGql } from '../auth/auth-guard-jwt.gql';
+import { NotFoundException, UseGuards } from '@nestjs/common';
 import { paginate } from '../pagination/paginator';
-
 
 @Resolver(() => Teacher)
 export class TeacherResolver {
-  private readonly logger = new Logger(TeacherResolver.name);
   constructor(
-    @InjectRepository(Teacher)
-    private readonly teachersRepository: Repository<Teacher>,
-  ) { }
+    @InjectRepository(Teacher) // Ensure correct injection of the repository
+    private readonly teachersRepository: Repository<Teacher>, // Declare the repository for Teacher entity
+  ) {}
 
   @Query(() => PaginatedTeachers)
   public async teachers(): Promise<PaginatedTeachers> {
@@ -28,25 +32,37 @@ export class TeacherResolver {
     );
   }
 
-  @Query(() => Teacher)
+  @Query(() => Teacher) // Use Teacher for the query
   public async teacher(
     @Args('id', { type: () => Int })
     id: number,
   ): Promise<Teacher> {
-    return await this.teachersRepository.findOneOrFail({
-      where: {
-        id,
-      },
+    const teacher = await this.teachersRepository.findOne({
+      where: { id },
+      relations: ['subjects', 'courses'], // Include related fields if needed
     });
+
+    if (!teacher) {
+      throw new NotFoundException(`Teacher with ID ${id} not found`);
+    }
+
+    return teacher;
   }
 
   @Mutation(() => Teacher, { name: 'teacherAdd' })
   @UseGuards(AuthGuardJwtGql)
   public async add(
     @Args('input', { type: () => TeacherAddInput })
-    input: TeacherAddInput
+    input: TeacherAddInput,
   ): Promise<Teacher> {
-    return await this.teachersRepository.save(new Teacher(input));
+    const newTeacher = new Teacher(input);
+    const savedTeacher = await this.teachersRepository.save(newTeacher);
+
+    // After adding the new teacher, print all teachers to debug
+    const allTeachers = await this.teachersRepository.find();
+    console.log('All Teachers:', allTeachers); // Log all teachers in the database
+
+    return savedTeacher;
   }
 
   @Mutation(() => Teacher, { name: 'teacherEdit' })
@@ -57,9 +73,7 @@ export class TeacherResolver {
     input: TeacherEditInput,
   ): Promise<Teacher> {
     const teacher = await this.teachersRepository.findOneOrFail({
-      where: {
-        id,
-      },
+      where: { id },
     });
     return await this.teachersRepository.save(
       new Teacher(Object.assign(teacher, input)),
@@ -72,9 +86,7 @@ export class TeacherResolver {
     id: number,
   ): Promise<EntityWithId> {
     const teacher = await this.teachersRepository.findOneOrFail({
-      where: {
-        id,
-      },
+      where: { id },
     });
     await this.teachersRepository.remove(teacher);
     return new EntityWithId(id);
@@ -82,7 +94,6 @@ export class TeacherResolver {
 
   @ResolveField('subjects')
   public async subjects(@Parent() teacher: Teacher) {
-    this.logger.debug(`@ResolveField subjects was called`);
     return await teacher.subjects;
   }
 }

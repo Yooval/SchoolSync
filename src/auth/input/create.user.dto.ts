@@ -1,10 +1,10 @@
-// This file defines the Data Transfer Object (DTO) for creating a new user, typically used for validating
-//and structuring incoming data in user-related operations.
-
-import { IsEmail, Length } from 'class-validator';
+import { IsEmail, Length, IsEnum } from 'class-validator';
+import { Transform } from 'class-transformer';
 import { UserDoesNotExist } from '../validation/user-does-not-exist.constraint';
 import { Field, InputType } from '@nestjs/graphql';
 import { IsRepeated } from '../../validation/is-repeated.constraint';
+import { UserRole } from '../user.entity'; // Import UserRole enum
+
 @InputType('UserAddInput')
 export class CreateUserDto {
   @Length(5)
@@ -33,4 +33,11 @@ export class CreateUserDto {
   @UserDoesNotExist()
   @Field()
   email: string;
+
+  @Transform(({ value }) => value.toUpperCase()) // Convert input to uppercase
+  @IsEnum(UserRole, {
+    message: 'Role must be either TEACHER or STUDENT (case insensitive)',
+  })
+  @Field(() => String)
+  role: UserRole; // Add role field
 }

@@ -1,13 +1,17 @@
 //  Defines the Teacher entity, representing a teacher in the school system.
 
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
 import { Subject } from './subject.entity';
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Gender } from './school.types';
 import { Course } from './course.entity';
 import { Paginated } from '../pagination/paginator';
-
-
 
 @Entity()
 @ObjectType()
@@ -31,19 +35,16 @@ export class Teacher {
     default: Gender.Other,
   })
   @Field(() => Gender)
-  gender: Gender
+  gender: Gender;
 
   @ManyToMany(() => Subject, (subject) => subject.teachers)
   @Field(() => [Subject])
-  subjects: Promise<Subject[]>;
-
+  subjects: Subject[];
 
   @OneToMany(() => Course, (course) => course.teacher)
   @Field(() => [Course])
-  courses: Promise<Course[]>;
-
+  courses: Course[];
 }
 
-
 @ObjectType()
-export class PaginatedTeachers extends Paginated<Teacher>(Teacher) { }
+export class PaginatedTeachers extends Paginated<Teacher>(Teacher) {}
