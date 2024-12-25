@@ -1,11 +1,11 @@
 
 ## Overview
 
-**SchoolSync** is a REST API Application for managing school events, making it easy to organize and track activities. Teachers can create events, and all users, including students, can join and participate. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
+**SchoolSync** is a REST API for managing school events. Teachers can create events, and everyone can join and participate. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
 
 ### Key Features
 
-- **Event Management**: Only users can create Events, anyone respond to any event by choosing **Accept**, **Maybe**, or **Reject**, allowing all participants to stay updated on attendance and event organizers.
+- **Event Management**: Teachers create events, and anyone can respond with Accept, Maybe or Reject. All users can easily stay informed about attendance and event organizers.
 - **Subjects and Courses**: Each subject can have multiple courses. Teachers must teach at least one subject.
 - **Organizer and Attendance Tracking**: Each event display the organizer and tracks users responses, providing a clear view of attendance.
 - **Security**: The app uses JWT(Json Web Tokens) for authentication and authorization. 
