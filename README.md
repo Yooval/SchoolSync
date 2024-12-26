@@ -1,7 +1,7 @@
 
 ## Overview
 
-**SchoolSync** is a REST API for managing school events. Teachers can create events, and everyone can join and participate. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
+**SchoolSync** is a REST API for managing school events. Teachers can create events, and everyone can join. It supports full CRUD (Create, Read, Update, Delete) operations for managing users, events, courses, and subjects.
 
 ### Key Features
 
